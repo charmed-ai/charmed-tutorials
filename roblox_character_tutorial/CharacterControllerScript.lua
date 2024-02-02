@@ -8,6 +8,11 @@ characterController.runSpeed = 8
 
 characterController.animations = {}
 
+-- Supported animation names
+-- idle
+-- walkForward
+-- runForward
+-- jumpForward
 
 local function playAnimation(name)
 	if characterController.animations[name] then
@@ -123,7 +128,6 @@ end
 
 local currentDestination
 characterController.pickDestination = function ()
-	print("PICKING")
 	if currentDestination then
 		currentDestination = currentDestination:FindFirstChildWhichIsA("Part")
 		if currentDestination then
@@ -133,7 +137,6 @@ characterController.pickDestination = function ()
 	end
 
 	local destinationIndex = random:NextInteger(1, #characterController.destinations)
-	print("PICKED "..tostring(destinationIndex))
 	currentDestination = characterController.destinations[destinationIndex]
 	walkTo(currentDestination.Position)
 end
